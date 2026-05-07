@@ -1,0 +1,951 @@
+"<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Aamir Ali - Senior MIS & Data Automation Specialist</title>
+    <meta name=\"description\" content=\"Professional portfolio of Aamir Ali - Senior MIS & Data Automation Specialist with 7.5+ years of experience\">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src=\"https://cdn.tailwindcss.com\"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .animate-pulse-custom {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        /* Card Hover Effects */
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Image Hover Effect */
+        .image-hover {
+            overflow: hidden;
+        }
+        
+        .image-hover img {
+            transition: transform 0.5s ease;
+        }
+        
+        .image-hover:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Blog Dialog */
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .dialog-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dialog-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class=\"bg-gray-50\">
+
+    <!-- Header -->
+    <header id=\"header\" class=\"fixed top-0 left-0 right-0 z-50 transition-all duration-300\">
+        <nav class=\"container mx-auto px-6 py-4\">
+            <div class=\"flex items-center justify-between\">
+                <a href=\"#\" class=\"text-2xl font-bold\" id=\"logo\">Aamir Ali</a>
+                
+                <!-- Desktop Menu -->
+                <div class=\"hidden lg:flex items-center gap-8\">
+                    <a href=\"#about\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">About</a>
+                    <a href=\"#skills\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Skills</a>
+                    <a href=\"#gallery\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Gallery</a>
+                    <a href=\"#videos\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Videos</a>
+                    <a href=\"#blog\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Blog</a>
+                    <a href=\"#dashboards\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Dashboards</a>
+                    <a href=\"#contact\" class=\"nav-link font-medium hover:text-blue-600 transition-colors\">Contact</a>
+                    <a href=\"#\" onclick=\"downloadResume()\" class=\"bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-all\">
+                        <i class=\"fas fa-download mr-2\"></i>Resume
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class=\"lg:hidden\" id=\"mobileMenuBtn\">
+                    <i class=\"fas fa-bars text-2xl\"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id=\"mobileMenu\" class=\"hidden lg:hidden mt-4 pb-4 space-y-3\">
+                <a href=\"#about\" class=\"block font-medium hover:text-blue-600\">About</a>
+                <a href=\"#skills\" class=\"block font-medium hover:text-blue-600\">Skills</a>
+                <a href=\"#gallery\" class=\"block font-medium hover:text-blue-600\">Gallery</a>
+                <a href=\"#videos\" class=\"block font-medium hover:text-blue-600\">Videos</a>
+                <a href=\"#blog\" class=\"block font-medium hover:text-blue-600\">Blog</a>
+                <a href=\"#dashboards\" class=\"block font-medium hover:text-blue-600\">Dashboards</a>
+                <a href=\"#contact\" class=\"block font-medium hover:text-blue-600\">Contact</a>
+                <a href=\"#\" onclick=\"downloadResume()\" class=\"block bg-blue-600 text-white px-5 py-2 rounded-lg text-center\">
+                    <i class=\"fas fa-download mr-2\"></i>Resume
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class=\"min-h-screen flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden\">
+        <!-- Animated background -->
+        <div class=\"absolute inset-0\">
+            <div class=\"absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl top-20 left-20 animate-pulse-custom\"></div>
+            <div class=\"absolute w-96 h-96 bg-blue-600/10 rounded-full blur-3xl bottom-20 right-20 animate-pulse-custom\" style=\"animation-delay: 1s;\"></div>
+        </div>
+        
+        <div class=\"container mx-auto px-6 relative z-10 text-center animate-fadeIn\">
+            <h1 class=\"text-5xl md:text-7xl font-bold text-white mb-6\">Aamir Ali</h1>
+            <p class=\"text-2xl md:text-3xl text-blue-300 mb-4 font-light\">Senior MIS & Data Automation Specialist</p>
+            <p class=\"text-lg text-gray-300 mb-8 max-w-2xl mx-auto\">
+                Transforming data into actionable insights through automation and analytics. 
+                7.5+ years of experience in MIS, Data Analysis, and Process Optimization.
+            </p>
+            
+            <div class=\"bg-white/10 backdrop-blur-md px-6 py-3 rounded-lg border border-white/20 inline-block mb-10\">
+                <p class=\"text-blue-300 text-sm\">Companies</p>
+                <p class=\"text-white font-semibold\">Flipkart • Tata Play • Tech Mahindra</p>
+            </div>
+            
+            <div class=\"flex flex-col sm:flex-row gap-4 justify-center items-center\">
+                <a href=\"#contact\" class=\"bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg transition-all hover:scale-105 shadow-lg\">
+                    Get In Touch
+                </a>
+                <a href=\"#\" onclick=\"downloadResume()\" class=\"border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg rounded-lg transition-all hover:scale-105 backdrop-blur-sm\">
+                    <i class=\"fas fa-download mr-2\"></i>Download Resume
+                </a>
+            </div>
+            
+            <div class=\"mt-16 animate-bounce\">
+                <a href=\"#about\" class=\"text-white/60 hover:text-white transition-colors\">
+                    <i class=\"fas fa-arrow-down text-3xl\"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id=\"about\" class=\"py-20 bg-gray-50\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-6xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">About Me</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                    <p class=\"text-xl text-gray-600 max-w-3xl mx-auto\">
+                        A passionate data professional dedicated to streamlining operations and driving efficiency
+                    </p>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class=\"grid grid-cols-2 md:grid-cols-4 gap-6 mb-16\" id=\"statsGrid\"></div>
+                
+                <!-- About Content -->
+                <div class=\"bg-white rounded-2xl shadow-xl p-8 md:p-12\">
+                    <h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Professional Journey</h3>
+                    <div class=\"space-y-4 text-gray-700 leading-relaxed\">
+                        <p>
+                            With over <span class=\"font-semibold text-blue-600\">7.5 years of experience</span> in MIS and Data Automation,
+                            I have worked with leading companies including <span class=\"font-semibold\">Flipkart, Tata Play, Tech Mahindra,</span> 
+                            and <span class=\"font-semibold\">Cogent E-Services</span>.
+                        </p>
+                        <p>
+                            My expertise lies in transforming complex manual processes into streamlined automated workflows.
+                            I have successfully <span class=\"font-semibold text-blue-600\">automated 30+ reporting workflows</span>,
+                            reducing data processing time by an impressive <span class=\"font-semibold text-blue-600\">83%</span>.
+                        </p>
+                        <p>
+                            I specialize in handling large-scale data operations, routinely processing datasets containing
+                            <span class=\"font-semibold text-blue-600\">1M to 10M+ records</span> using Power Query and MS Access.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id=\"skills\" class=\"py-20 bg-white\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-6xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Skills & Expertise</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                </div>
+                
+                <div class=\"grid md:grid-cols-2 gap-8\" id=\"skillsGrid\"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id=\"gallery\" class=\"py-20 bg-gray-50\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-7xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Project Gallery</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                </div>
+                
+                <!-- Category Filter -->
+                <div class=\"flex flex-wrap justify-center gap-3 mb-12\" id=\"categoryFilter\"></div>
+                
+                <!-- Photo Grid -->
+                <div class=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\" id=\"photoGrid\"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section id=\"videos\" class=\"py-20 bg-white\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-7xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Video Tutorials</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                </div>
+                
+                <div class=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\" id=\"videoGrid\"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id=\"blog\" class=\"py-20 bg-gray-50\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-6xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Blog & Insights</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                    <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-8\">
+                        Sharing experiences and insights from data analytics and automation
+                    </p>
+                    
+                    <button onclick=\"openBlogDialog()\" class=\"bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all\">
+                        <i class=\"fas fa-pen mr-2\"></i>Write New Blog
+                    </button>
+                </div>
+                
+                <div id=\"blogGrid\" class=\"space-y-8\"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboards Section -->
+    <section id=\"dashboards\" class=\"py-20 bg-white\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-6xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Live Dashboards</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                </div>
+                
+                <div class=\"bg-blue-50 border border-blue-200 rounded-lg p-6 mb-10\">
+                    <p class=\"text-gray-700\">
+                        <i class=\"fas fa-chart-bar text-blue-600 mr-2\"></i>
+                        <strong>Note:</strong> Update the dashboard embed URLs in the JavaScript section to display your Power BI or Google Drive dashboards.
+                    </p>
+                </div>
+                
+                <div class=\"space-y-10\" id=\"dashboardsGrid\"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id=\"contact\" class=\"py-20 bg-gray-50\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"max-w-6xl mx-auto\">
+                <div class=\"text-center mb-16\">
+                    <h2 class=\"text-4xl md:text-5xl font-bold text-gray-900 mb-4\">Get In Touch</h2>
+                    <div class=\"w-24 h-1 bg-blue-600 mx-auto mb-6\"></div>
+                </div>
+                
+                <div class=\"grid md:grid-cols-2 gap-10\">
+                    <!-- Contact Info -->
+                    <div class=\"space-y-6\" id=\"contactInfo\"></div>
+                    
+                    <!-- Contact Form -->
+                    <div class=\"bg-white rounded-2xl shadow-lg p-8\">
+                        <h3 class=\"text-2xl font-bold text-gray-900 mb-6\">Send Me a Message</h3>
+                        <form id=\"contactForm\" class=\"space-y-5\">
+                            <div>
+                                <label class=\"block text-sm font-medium text-gray-700 mb-2\">Name *</label>
+                                <input type=\"text\" id=\"contactName\" required class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent\">
+                            </div>
+                            <div>
+                                <label class=\"block text-sm font-medium text-gray-700 mb-2\">Email *</label>
+                                <input type=\"email\" id=\"contactEmail\" required class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent\">
+                            </div>
+                            <div>
+                                <label class=\"block text-sm font-medium text-gray-700 mb-2\">Subject</label>
+                                <input type=\"text\" id=\"contactSubject\" class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent\">
+                            </div>
+                            <div>
+                                <label class=\"block text-sm font-medium text-gray-700 mb-2\">Message *</label>
+                                <textarea id=\"contactMessage\" required rows=\"5\" class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent\"></textarea>
+                            </div>
+                            <button type=\"submit\" class=\"w-full bg-blue-600 hover:bg-blue-700 text-white py-4 text-lg rounded-lg transition-all hover:scale-105 shadow-lg\">
+                                <i class=\"fas fa-paper-plane mr-2\"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=\"bg-gray-900 text-white py-12\">
+        <div class=\"container mx-auto px-6\">
+            <div class=\"grid md:grid-cols-3 gap-10 mb-8\">
+                <div>
+                    <h3 class=\"text-2xl font-bold mb-4\">Aamir Ali</h3>
+                    <p class=\"text-gray-400\">Senior MIS & Data Automation Specialist</p>
+                </div>
+                
+                <div>
+                    <h4 class=\"text-lg font-semibold mb-4\">Quick Links</h4>
+                    <ul class=\"space-y-2\">
+                        <li><a href=\"#about\" class=\"text-gray-400 hover:text-blue-400\">About</a></li>
+                        <li><a href=\"#skills\" class=\"text-gray-400 hover:text-blue-400\">Skills</a></li>
+                        <li><a href=\"#gallery\" class=\"text-gray-400 hover:text-blue-400\">Gallery</a></li>
+                        <li><a href=\"#contact\" class=\"text-gray-400 hover:text-blue-400\">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class=\"text-lg font-semibold mb-4\">Contact Info</h4>
+                    <ul class=\"space-y-3 text-gray-400\">
+                        <li><i class=\"fas fa-envelope mr-2 text-blue-400\"></i>aamirali0366815@gmail.com</li>
+                        <li><i class=\"fas fa-phone mr-2 text-blue-400\"></i>+91-9953087224</li>
+                        <li><i class=\"fab fa-linkedin mr-2 text-blue-400\"></i><a href=\"https://linkedin.com/in/aamiralidatanalyst\" target=\"_blank\" class=\"hover:text-blue-400\">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class=\"border-t border-gray-800 pt-8 text-center text-gray-400\">
+                <p>&copy; 2025 Aamir Ali. All rights reserved.</p>
+            </div>
+        </footer>
+
+    <!-- Image Lightbox Modal -->
+    <div id=\"lightbox\" class=\"modal\">
+        <span class=\"absolute top-6 right-6 text-white text-4xl cursor-pointer z-10\" onclick=\"closeLightbox()\">&times;</span>
+        <img class=\"modal-content\" id=\"lightboxImg\">
+        <div class=\"absolute bottom-10 left-0 right-0 text-center\">
+            <h3 class=\"text-white text-2xl font-bold mb-2\" id=\"lightboxTitle\"></h3>
+            <p class=\"text-gray-300\" id=\"lightboxDesc\"></p>
+        </div>
+    </div>
+
+    <!-- Blog Dialog -->
+    <div id=\"blogDialog\" class=\"dialog-overlay\">
+        <div class=\"dialog-content p-8\">
+            <div class=\"flex justify-between items-center mb-6\">
+                <h3 class=\"text-2xl font-bold\">Write a New Blog Post</h3>
+                <button onclick=\"closeBlogDialog()\" class=\"text-gray-500 hover:text-gray-700\">
+                    <i class=\"fas fa-times text-2xl\"></i>
+                </button>
+            </div>
+            <form id=\"blogForm\" class=\"space-y-5\">
+                <div>
+                    <label class=\"block text-sm font-medium text-gray-700 mb-2\">Blog Title *</label>
+                    <input type=\"text\" id=\"blogTitle\" required class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600\">
+                </div>
+                <div>
+                    <label class=\"block text-sm font-medium text-gray-700 mb-2\">Category *</label>
+                    <input type=\"text\" id=\"blogCategory\" required placeholder=\"e.g., Automation, Data Analytics\" class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600\">
+                </div>
+                <div>
+                    <label class=\"block text-sm font-medium text-gray-700 mb-2\">Content *</label>
+                    <textarea id=\"blogContent\" required rows=\"8\" placeholder=\"Write your blog content...\" class=\"w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600\"></textarea>
+                </div>
+                <div class=\"flex gap-3 justify-end\">
+                    <button type=\"button\" onclick=\"closeBlogDialog()\" class=\"px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50\">
+                        Cancel
+                    </button>
+                    <button type=\"submit\" class=\"px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700\">
+                        Publish Blog
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id=\"toast\" class=\"fixed bottom-6 right-6 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg transform translate-y-full transition-transform duration-300\">
+        <div class=\"flex items-center gap-3\">
+            <i class=\"fas fa-check-circle text-xl\"></i>
+            <span id=\"toastMessage\"></span>
+        </div>
+    </div>
+
+    <script>
+        // ===== DATA CONFIGURATION - UPDATE HERE =====
+        
+        const CONFIG = {
+            resumeLink: \"https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view\",
+            email: \"aamirali0366815@gmail.com\",
+            phone: \"+91-9953087224\",
+            linkedin: \"https://linkedin.com/in/aamiralidatanalyst\",
+            location: \"Loni, Ghaziabad, UP, India\"
+        };
+
+        const stats = [
+            { icon: \"fa-chart-line\", number: \"7.5+\", label: \"Years Experience\" },
+            { icon: \"fa-bolt\", number: \"30+\", label: \"Automations Built\" },
+            { icon: \"fa-database\", number: \"83%\", label: \"Efficiency Gain\" },
+            { icon: \"fa-award\", number: \"10M+\", label: \"Records Processed\" }
+        ];
+
+        const skills = [
+            {
+                category: \"Data Analysis\",
+                icon: \"fa-database\",
+                items: [\"Advanced Excel\", \"Power Query\", \"Power BI\", \"SQL\", \"MS Access\"]
+            },
+            {
+                category: \"Automation\",
+                icon: \"fa-cog\",
+                items: [\"VBA\", \"Macros\", \"Python\", \"ETL Pipelines\", \"Process Automation\"]
+            },
+            {
+                category: \"Programming\",
+                icon: \"fa-code\",
+                items: [\"Python\", \"SQL\", \"VBA\", \"DAX\", \"M Language\"]
+            },
+            {
+                category: \"Tools & Technologies\",
+                icon: \"fa-wrench\",
+                items: [\"Power BI\", \"MS Excel\", \"MS Access\", \"Python Libraries\", \"Git\"]
+            }
+        ];
+
+        const photoGallery = [
+            {
+                id: 1,
+                title: \"Sales Dashboard - Power BI\",
+                category: \"Power BI Dashboards\",
+                imageUrl: \"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop\",
+                description: \"Interactive sales analytics dashboard\"
+            },
+            {
+                id: 2,
+                title: \"Excel Automation Tool\",
+                category: \"Excel Projects\",
+                imageUrl: \"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop\",
+                description: \"VBA-based automated reporting system\"
+            },
+            {
+                id: 3,
+                title: \"Python Data Pipeline\",
+                category: \"Python Work\",
+                imageUrl: \"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop\",
+                description: \"Automated ETL pipeline processing 10M+ records\"
+            },
+            {
+                id: 4,
+                title: \"Inventory Dashboard\",
+                category: \"Power BI Dashboards\",
+                imageUrl: \"https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&h=600&fit=crop\",
+                description: \"Real-time inventory tracking\"
+            },
+            {
+                id: 5,
+                title: \"Report Automation\",
+                category: \"Automation Tools\",
+                imageUrl: \"https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop\",
+                description: \"Reduced processing time by 83%\"
+            },
+            {
+                id: 6,
+                title: \"Financial Analysis\",
+                category: \"Excel Projects\",
+                imageUrl: \"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop\",
+                description: \"Advanced Excel with Power Query\"
+            }
+        ];
+
+        const videoGallery = [
+            {
+                id: 1,
+                title: \"Power BI Dashboard Tutorial\",
+                category: \"Power BI Demos\",
+                videoId: \"c8O6gZB8cr8\",
+                description: \"Building interactive dashboards\"
+            },
+            {
+                id: 2,
+                title: \"Excel VBA Automation\",
+                category: \"Excel Tutorials\",
+                videoId: \"egeCE1ibWSo\",
+                description: \"Automating repetitive tasks\"
+            },
+            {
+                id: 3,
+                title: \"Python Data Processing\",
+                category: \"Automation Walkthroughs\",
+                videoId: \"rfscVS0vtbw\",
+                description: \"Processing large datasets efficiently\"
+            }
+        ];
+
+        const dashboards = [
+            {
+                id: 1,
+                title: \"Sales Analytics Dashboard\",
+                type: \"Power BI\",
+                embedUrl: \"https://app.powerbi.com/view?r=SAMPLE_URL\",
+                description: \"Real-time sales metrics\"
+            }
+        ];
+
+        // ===== INITIALIZATION =====
+        
+        let selectedCategory = 'All';
+        let currentLightboxIndex = 0;
+        let filteredPhotos = photoGallery;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initHeader();
+            renderStats();
+            renderSkills();
+            renderPhotoGallery();
+            renderVideoGallery();
+            renderBlogs();
+            renderDashboards();
+            renderContactInfo();
+            initForms();
+        });
+
+        // ===== HEADER =====
+        
+        function initHeader() {
+            const header = document.getElementById('header');
+            const logo = document.getElementById('logo');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white', 'shadow-lg');
+                    logo.classList.add('text-gray-900');
+                    navLinks.forEach(link => link.classList.add('text-gray-700'));
+                } else {
+                    header.classList.remove('bg-white', 'shadow-lg');
+                    logo.classList.remove('text-gray-900');
+                    navLinks.forEach(link => link.classList.remove('text-gray-700'));
+                    logo.classList.add('text-white');
+                    navLinks.forEach(link => link.classList.add('text-white'));
+                }
+            });
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // ===== STATS =====
+        
+        function renderStats() {
+            const grid = document.getElementById('statsGrid');
+            grid.innerHTML = stats.map(stat => `
+                <div class=\"bg-white rounded-xl p-6 text-center shadow-lg hover-card\">
+                    <i class=\"fas ${stat.icon} text-4xl text-blue-600 mb-3\"></i>
+                    <p class=\"text-4xl font-bold text-gray-900 mb-2\">${stat.number}</p>
+                    <p class=\"text-gray-600 text-sm font-medium\">${stat.label}</p>
+                </div>
+            `).join('');
+        }
+
+        // ===== SKILLS =====
+        
+        function renderSkills() {
+            const grid = document.getElementById('skillsGrid');
+            grid.innerHTML = skills.map(skill => `
+                <div class=\"border-2 border-gray-200 rounded-xl p-6 hover-card hover:border-blue-500\">
+                    <div class=\"flex items-center gap-3 mb-4\">
+                        <div class=\"p-3 bg-blue-100 rounded-lg\">
+                            <i class=\"fas ${skill.icon} text-xl text-blue-600\"></i>
+                        </div>
+                        <h3 class=\"text-xl font-bold\">${skill.category}</h3>
+                    </div>
+                    <div class=\"flex flex-wrap gap-2\">
+                        ${skill.items.map(item => `
+                            <span class=\"px-4 py-2 bg-gray-100 hover:bg-blue-100 hover:text-blue-700 rounded-lg text-sm font-medium transition-colors\">
+                                ${item}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== PHOTO GALLERY =====
+        
+        function renderPhotoGallery() {
+            const categories = ['All', ...new Set(photoGallery.map(p => p.category))];
+            
+            // Render category filter
+            const filter = document.getElementById('categoryFilter');
+            filter.innerHTML = categories.map(cat => `
+                <button 
+                    onclick=\"filterGallery('${cat}')\" 
+                    class=\"px-6 py-2 rounded-lg transition-all ${selectedCategory === cat ? 'bg-blue-600 text-white shadow-lg' : 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-blue-50'}\">
+                    ${cat}
+                </button>
+            `).join('');
+            
+            // Render photos
+            filteredPhotos = selectedCategory === 'All' 
+                ? photoGallery 
+                : photoGallery.filter(p => p.category === selectedCategory);
+            
+            const grid = document.getElementById('photoGrid');
+            grid.innerHTML = filteredPhotos.map((photo, index) => `
+                <div class=\"bg-white rounded-xl overflow-hidden shadow-lg hover-card cursor-pointer border-2 hover:border-blue-500\" onclick=\"openLightbox(${index})\">
+                    <div class=\"image-hover aspect-video overflow-hidden\">
+                        <img src=\"${photo.imageUrl}\" alt=\"${photo.title}\" class=\"w-full h-full object-cover\">
+                    </div>
+                    <div class=\"p-6\">
+                        <span class=\"inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-3\">
+                            ${photo.category}
+                        </span>
+                        <h3 class=\"text-xl font-semibold mb-2\">${photo.title}</h3>
+                        <p class=\"text-gray-600 text-sm\">${photo.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterGallery(category) {
+            selectedCategory = category;
+            renderPhotoGallery();
+        }
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const photo = filteredPhotos[index];
+            document.getElementById('lightboxImg').src = photo.imageUrl;
+            document.getElementById('lightboxTitle').textContent = photo.title;
+            document.getElementById('lightboxDesc').textContent = photo.description;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // ===== VIDEO GALLERY =====
+        
+        function renderVideoGallery() {
+            const grid = document.getElementById('videoGrid');
+            grid.innerHTML = videoGallery.map(video => `
+                <div class=\"bg-white rounded-xl overflow-hidden shadow-lg hover-card border-2 hover:border-blue-500\">
+                    <div class=\"aspect-video bg-gray-900\">
+                        <iframe 
+                            class=\"w-full h-full\" 
+                            src=\"https://www.youtube.com/embed/${video.videoId}\" 
+                            title=\"${video.title}\"
+                            frameborder=\"0\" 
+                            allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class=\"p-6\">
+                        <span class=\"inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium mb-3\">
+                            ${video.category}
+                        </span>
+                        <h3 class=\"text-xl font-semibold mb-2\">${video.title}</h3>
+                        <p class=\"text-gray-600 text-sm\">${video.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== BLOG =====
+        
+        function getBlogs() {
+            const stored = localStorage.getItem('portfolioBlogs');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveBlogs(blogs) {
+            localStorage.setItem('portfolioBlogs', JSON.stringify(blogs));
+        }
+
+        function renderBlogs() {
+            const blogs = getBlogs();
+            const grid = document.getElementById('blogGrid');
+            
+            if (blogs.length === 0) {
+                grid.innerHTML = `
+                    <div class=\"bg-white rounded-xl p-10 text-center shadow-lg\">
+                        <p class=\"text-gray-600 text-lg\">No blog posts yet. Write your first blog to get started!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = blogs.map(blog => `
+                <div class=\"bg-white rounded-xl overflow-hidden shadow-lg hover-card border-2 hover:border-blue-500\">
+                    <div class=\"bg-gradient-to-r from-blue-50 to-white p-6\">
+                        <div class=\"flex items-center justify-between mb-3\">
+                            <span class=\"px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-medium\">${blog.category}</span>
+                            <span class=\"text-gray-600 text-sm\">
+                                <i class=\"far fa-calendar mr-2\"></i>${formatDate(blog.date)}
+                            </span>
+                        </div>
+                        <h3 class=\"text-2xl font-bold text-gray-900\">${blog.title}</h3>
+                    </div>
+                    <div class=\"p-6\">
+                        <p class=\"text-gray-700 leading-relaxed\">${blog.content}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openBlogDialog() {
+            document.getElementById('blogDialog').classList.add('active');
+        }
+
+        function closeBlogDialog() {
+            document.getElementById('blogDialog').classList.remove('active');
+            document.getElementById('blogForm').reset();
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // ===== DASHBOARDS =====
+        
+        function renderDashboards() {
+            const grid = document.getElementById('dashboardsGrid');
+            grid.innerHTML = dashboards.map(dash => `
+                <div class=\"bg-white rounded-xl overflow-hidden shadow-lg border-2 hover:border-blue-500\">
+                    <div class=\"bg-gradient-to-r from-blue-50 to-white p-6\">
+                        <div class=\"flex items-center justify-between\">
+                            <div class=\"flex items-center gap-3\">
+                                <div class=\"p-2 bg-blue-100 rounded-lg\">
+                                    <i class=\"fas fa-chart-bar text-xl text-blue-600\"></i>
+                                </div>
+                                <h3 class=\"text-2xl font-bold\">${dash.title}</h3>
+                            </div>
+                            <span class=\"px-3 py-1 ${dash.type === 'Power BI' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'} rounded-full text-sm font-medium\">
+                                ${dash.type}
+                            </span>
+                        </div>
+                        <p class=\"text-gray-600 mt-2\">${dash.description}</p>
+                    </div>
+                    <div class=\"relative w-full\" style=\"padding-bottom: 56.25%;\">
+                        <iframe 
+                            src=\"${dash.embedUrl}\" 
+                            class=\"absolute inset-0 w-full h-full border-0\"
+                            title=\"${dash.title}\"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== CONTACT =====
+        
+        function renderContactInfo() {
+            const contactDetails = [
+                { icon: \"fa-envelope\", label: \"Email\", value: CONFIG.email, href: `mailto:${CONFIG.email}` },
+                { icon: \"fa-phone\", label: \"Phone\", value: CONFIG.phone, href: `tel:${CONFIG.phone}` },
+                { icon: \"fa-map-marker-alt\", label: \"Location\", value: CONFIG.location, href: null },
+                { icon: \"fab fa-linkedin\", label: \"LinkedIn\", value: \"Connect on LinkedIn\", href: CONFIG.linkedin }
+            ];
+            
+            const container = document.getElementById('contactInfo');
+            container.innerHTML = contactDetails.map(detail => `
+                <div class=\"bg-white rounded-xl p-6 shadow-lg hover-card border-2 hover:border-blue-500\">
+                    <div class=\"flex items-start gap-4\">
+                        <div class=\"p-3 bg-blue-100 rounded-lg\">
+                            <i class=\"fas ${detail.icon} text-xl text-blue-600\"></i>
+                        </div>
+                        <div>
+                            <p class=\"text-sm font-medium text-gray-600 mb-1\">${detail.label}</p>
+                            ${detail.href ? 
+                                `<a href=\"${detail.href}\" ${detail.label === 'LinkedIn' ? 'target=\"_blank\"' : ''} class=\"text-gray-900 font-medium hover:text-blue-600\">${detail.value}</a>` :
+                                `<p class=\"text-gray-900 font-medium\">${detail.value}</p>`
+                            }
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== FORMS =====
+        
+        function initForms() {
+            // Blog Form
+            document.getElementById('blogForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const blog = {
+                    id: Date.now(),
+                    title: document.getElementById('blogTitle').value,
+                    category: document.getElementById('blogCategory').value,
+                    content: document.getElementById('blogContent').value,
+                    date: new Date().toISOString()
+                };
+                
+                const blogs = getBlogs();
+                blogs.unshift(blog);
+                saveBlogs(blogs);
+                
+                closeBlogDialog();
+                renderBlogs();
+                showToast('Blog published successfully!');
+            });
+            
+            // Contact Form
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const subject = document.getElementById('contactSubject').value;
+                const message = document.getElementById('contactMessage').value;
+                
+                const mailtoLink = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+Message:
+${message}`)}`;
+                
+                window.location.href = mailtoLink;
+                
+                this.reset();
+                showToast('Opening email client...');
+            });
+        }
+
+        // ===== UTILITIES =====
+        
+        function downloadResume() {
+            window.open(CONFIG.resumeLink, '_blank');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(200%)';
+            }, 3000);
+        }
+
+        // Close modals on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeBlogDialog();
+            }
+        });
+    </script>
+</body>
+</html>
+"
